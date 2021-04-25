@@ -19,7 +19,7 @@ namespace Shortcake
                 if(!Process.GetProcesses().Where(x => x.ProcessName == presence.Process.ProcessName).Any())
                 {
                     presence.Deinitialize();
-                    Console.WriteLine("Thanks for using Bheithir!");
+                    Console.WriteLine("Thanks for using Shortcake!");
                     return;
                 }
             }

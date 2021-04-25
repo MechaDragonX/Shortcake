@@ -73,7 +73,10 @@ namespace Shortcake
             string details;
             try
             {
-                details = windowTitle;
+                if(!windowTitle.Contains(" - "))
+                    details = "Sifting through records";
+                else
+                    details = windowTitle;
             }
             catch (Exception) { return; }
 

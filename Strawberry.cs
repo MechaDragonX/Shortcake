@@ -73,17 +73,27 @@ namespace Shortcake
             string details;
             try
             {
-                if(!windowTitle.Contains(" - "))
-                    details = "Sifting through records";
-                else
-                    details = windowTitle;
+                switch (windowTitle)
+				{
+                    case "Strawberry Music Player":
+                    case "Equalizer":
+                    case "Cover Manager":
+                    case "Transcode Music":
+                    case "Settings":
+                        details = "Nothing playing.";
+                        break;
+                    default:
+                        details = windowTitle;
+                        break;
+                }
             }
             catch (Exception) { return; }
 
             string status;
             try
             {
-                status = "Listening to Music";
+                if (details != "Nothing playing.") status = "Listening to music";
+                else status = null;
             }
             catch(Exception) { return; }
 
@@ -100,11 +110,10 @@ namespace Shortcake
                         LargeImageText = "Strawberry"
                     }
                 });
-                Console.WriteLine("Presence successfully set!");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("Presence was not set successfully!");
+                Console.WriteLine($"Presence was not set successfully.\nERROR: ${e.Message}");
                 return;
             }
         }
